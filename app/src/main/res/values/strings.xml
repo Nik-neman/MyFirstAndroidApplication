@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyFirstAndroidApplication</string>
+    <string name="in_app_name">Умный конвертер</string>
+</resources>
