@@ -1,7 +1,8 @@
 package com.example.myfirstandroidapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.DialogInterface;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         private EditText text_from_user;
         private TextView result;
         private Button btn;
+        private float num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +28,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnBtnClick(){
-         text_from_user = findViewById(R.id.editText);
-         result = findViewById(R.id.result_field);
-         btn = findViewById(R.id.button_convert);
+         this.text_from_user = findViewById(R.id.editText);
+         this.result = findViewById(R.id.result_field);
+         this.btn = findViewById(R.id.button_convert);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = text_from_user.getText().toString();
                 if(isDigit(text)){
-                    float num = Float.parseFloat(text_from_user.getText().toString());
-                    num *= 1.61;
-                    result.setText(Float.toString(num));
-                    btn.setText("Готово");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        btn.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                    } else {
-                        btn.setBackgroundColor(Color.BLUE);
-                    }
+                    num = Float.parseFloat(text_from_user.getText().toString());
+
+                   //Задаём настройки всплывающего окна
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setMessage("Хотите умножить значение на 2?");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            num *= 1.61* 2f;
+                            result.setText(Float.toString(num));
+                            btn.setText("Готово");
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                btn.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                            } else {
+                                btn.setBackgroundColor(Color.BLUE);
+                            }
+                        }
+                    });
+
+                    builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int i) {
+                            num *= 1.61;
+                            result.setText(Float.toString(num));
+                            btn.setText("Готово");
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                btn.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                            } else {
+                                btn.setBackgroundColor(Color.BLUE);
+                                dialog.cancel();
+                            }
+                        }
+                    });
+
+                    //Создаём всплывающее окно
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Умножение чисел");
+                    alert.show();
+
+
+
                 }else {
 //                    result.setText("Число введено не корректно");
                     Toast.makeText(MainActivity.this, "Число введено не корректно",
