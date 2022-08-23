@@ -6,15 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".LoginPageActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="171dp"
-        android:layout_height="77dp"
-        android:text="Урааа новая страница"
-        android:textAlignment="center"
-        android:textSize="16sp"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment"
+        android:name="com.example.myfirstandroidapplication.InfoFragment"
+        android:layout_width="410dp"
+        android:layout_height="529dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/fr2"
+        android:layout_width="145dp"
+        android:layout_height="49dp"
+        android:onClick="FragmentChange"
+        android:text="Фрагмент 2"
+        android:textAlignment="center"
+        android:textColor="#070707"
+        android:textStyle="bold"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <Button
+        android:id="@+id/fr1"
+        android:layout_width="146dp"
+        android:layout_height="48dp"
+        android:onClick="FragmentChange"
+        android:text="Фрагмент 1"
+        android:textColor="#0E0E0E"
+        android:textStyle="bold"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.154" />
 </androidx.constraintlayout.widget.ConstraintLayout>
