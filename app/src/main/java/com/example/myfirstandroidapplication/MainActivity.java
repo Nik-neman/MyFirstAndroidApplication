@@ -3,6 +3,7 @@ package com.example.myfirstandroidapplication;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,12 +14,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
 
         private EditText text_from_user;
         private TextView result;
         private Button btn;
         private float num;
+        private Button nextPageBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
          this.text_from_user = findViewById(R.id.editText);
          this.result = findViewById(R.id.result_field);
          this.btn = findViewById(R.id.button_convert);
+         this.nextPageBtn = findViewById(R.id.nextPageBtn);
+
+         nextPageBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+//                 Intent intent = new Intent("com.example.myfirstandroidapplication.LoginPageActivity");
+                 Intent intent = new Intent(MainActivity.this, LoginPageActivity.class);
+                 startActivity(intent);
+                 result.setText("Переходим на другую страницу");
+             }
+         });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
