@@ -20,7 +20,8 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.153"
+        tools:ignore="OnClick" />
 
     <EditText
         android:id="@+id/editText"
@@ -41,7 +42,6 @@
         android:id="@+id/button_convert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="OnBtnClick"
         android:text="Конвертировать"
         android:textColor="@color/black"
         app:backgroundTint="@color/btnColor"
